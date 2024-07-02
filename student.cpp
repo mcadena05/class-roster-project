@@ -4,7 +4,16 @@ using namespace std;
 
 #include "student.h"
 
-
+Student::Student(int studentID, string firstName, string lastName, string email,
+        int age, int daysInCourse[3], string degreeProgram) {
+        studentID = studentID;
+        firstName = firstName; 
+        lastName = lastName;
+        email = email;
+        age = age; 
+        daysInCourse[3] = daysInCourse[3]; 
+        degreeProgram = degreeProgram;
+        }
 
 void Student::SetId(int studentID) {
     studentID = studentID;
