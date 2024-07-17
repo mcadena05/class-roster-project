@@ -5,26 +5,32 @@ using namespace std;
 #include "student.h"
 
 // default constructor
-Student::Student(){
+Student::Student()
+{
    this->studentID = "";
-	this->firstName = "";
-	this->lastName = "";
-	this->email = "";
-	this->age = 0;
-	this->daysInCourse[0] = 0;
-		this->degreeProgram;
+   this->firstName = "";
+   this->lastName = "";
+   this->email = "";
+   this->age = 0;
+   this->daysInCourse[0] = 0;
+   this->daysInCourse[1] = 0;
+   this->daysInCourse[2] = 0;
+   this->degreeProgram;
 }
 
-// Parameter constructor 
+// Parameter constructor
 Student::Student(string studentID, string firstName, string lastName, string email,
-                 int age, int daysInCourse[3], string degreeProgram)
+                 int age, int daysInCourse[], string degreeProgram)
 {
    this->studentID = studentID;
+   // Data member      Parameter
    this->firstName = firstName;
    this->lastName = lastName;
    this->email = email;
    this->age = age;
-   this->daysInCourse[3] = daysInCourse[3];
+   this->daysInCourse[0] = daysInCourse[0];
+   this->daysInCourse[1] = daysInCourse[1];
+   this->daysInCourse[2] = daysInCourse[2];
    this->degreeProgram = degreeProgram;
 }
 
@@ -32,6 +38,7 @@ Student::Student(string studentID, string firstName, string lastName, string ema
 void Student::SetId(string studentID)
 {
    this->studentID = studentID;
+   // Data member      Parameter
 }
 
 void Student::SetFirstName(string firstName)
@@ -54,9 +61,14 @@ void Student::SetAge(int age)
    this->age = age;
 }
 
-void Student::SetDaysInCourse(int daysInCourse[3])
+void Student::SetDaysInCourse(int daysCourse1, int daysCourse2, int daysCourse3)
 {
-   this->daysInCourse[3] = daysInCourse[3];
+   for (int i = 0; i < 3; i++)
+   {
+      this->daysInCourse[0] = daysCourse1;
+      this->daysInCourse[1] = daysCourse2;
+      this->daysInCourse[2] = daysCourse3;
+   }
 }
 
 void Student::SetDegreeProgram(string degreeProgram)

@@ -13,7 +13,7 @@ public:
     void SetLastName(string lastName);
     void SetEmail(string email);
     void SetAge(int age);
-    void SetDaysInCourse(int daysInCourse[3]);
+    void SetDaysInCourse(int daysCourse1, int daysCourse2, int daysCourse3);
     void SetDegreeProgram(string degreeProgram);
 
     string GetId();
