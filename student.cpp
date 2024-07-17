@@ -14,6 +14,7 @@ Student::Student(){
 	this->daysInCourse[0] = 0;
 		this->degreeProgram;
 }
+
 // Parameter constructor 
 Student::Student(string studentID, string firstName, string lastName, string email,
                  int age, int daysInCourse[3], string degreeProgram)
