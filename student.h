@@ -28,7 +28,7 @@ public:
     Student();
 
     Student(string studentID, string firstName, string lastName, string email,
-            int age, int daysInCourse[3], string degreeProgram);
+            int age, int daysInCourse[], string degreeProgram);
 
 private:
     string studentID;
