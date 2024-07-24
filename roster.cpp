@@ -91,21 +91,30 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 
 void Roster::remove(string studentId)
 {
-	bool foundStudent = false;
-	for (int i = 0; i < lastIndex; ++i) {
-		if (classRosterArray[i]->GetId() == studentId) {
-			
-			foundStudent = true;
-			int j = i;
-			for (j = i; j < lastIndex; ++j) {
-				classRosterArray[j] = classRosterArray[j + 1];
-			}
-			lastIndex--;
-			cout << "Student " << studentId << " removed from roster." << endl;
-		}
-	}
+    bool foundStudent = false;
 
-	if (foundStudent == false) {
-			cout << "Student ID not found." << endl;
-	}
+    for (int i = 0; i < lastIndex; ++i)
+    {
+
+        if (classRosterArray[i]->GetId() == studentId)
+        {
+
+            foundStudent = true;
+            int j = i;
+
+            for (j = i; j < lastIndex; ++j)
+            {
+                classRosterArray[j] = classRosterArray[j + 1];
+            }
+
+            lastIndex--;
+            cout << "Student " << studentId << " has been removed" << endl;
+        }
+    }
+
+    if (foundStudent == false)
+    {
+        cout << "This Student ID was not found." << endl;
+    }
 }
+ 
