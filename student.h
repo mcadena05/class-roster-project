@@ -5,6 +5,8 @@
 #include <string>
 using namespace std;
 
+#include "degree.h"
+
 class Student
 {
 public:
@@ -13,22 +15,22 @@ public:
     void SetLastName(string lastName);
     void SetEmail(string email);
     void SetAge(int age);
-    void SetDaysInCourse(int daysCourse1, int daysCourse2, int daysCourse3);
-    void SetDegreeProgram(string degreeProgram);
+    void SetDaysInCourse(int daysInCourse1, int daysInCourse2, int daysInCourse3);
+    void SetDegreeProgram(DegreeProgram degreeProgram);
 
     string GetId();
     string GetFirstName();
     string GetLastName();
     string GetEmail();
     int GetAge();
-    int GetDaysInCourse();
-    string GetDegreeProgram();
+    int *GetDaysInCourse();
+    DegreeProgram GetDegreeProgram();
     void Print();
 
     Student();
 
     Student(string studentID, string firstName, string lastName, string email,
-            int age, int daysInCourse[], string degreeProgram);
+            int age, int daysInCourse[], DegreeProgram degreeProgram);
 
 private:
     string studentID;
@@ -37,7 +39,7 @@ private:
     string email;
     int age;
     int daysInCourse[3];
-    string degreeProgram;
+    DegreeProgram degreeProgram;
 };
 
 #endif

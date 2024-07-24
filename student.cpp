@@ -7,10 +7,10 @@ using namespace std;
 // default constructor
 Student::Student()
 {
-   this->studentID = "";
-   this->firstName = "";
-   this->lastName = "";
-   this->email = "";
+   this->studentID = "N/A";
+   this->firstName = "N/A";
+   this->lastName = "N/A";
+   this->email = "N/A";
    this->age = 0;
    this->daysInCourse[0] = 0;
    this->daysInCourse[1] = 0;
@@ -20,7 +20,7 @@ Student::Student()
 
 // Parameter constructor
 Student::Student(string studentID, string firstName, string lastName, string email,
-                 int age, int daysInCourse[], string degreeProgram)
+                 int age, int daysInCourse[], DegreeProgram degreeProgram)
 {
    this->studentID = studentID;
    // Data member      Parameter
@@ -39,6 +39,8 @@ void Student::SetId(string studentID)
 {
    this->studentID = studentID;
    // Data member      Parameter
+
+   return;
 }
 
 void Student::SetFirstName(string firstName)
@@ -61,17 +63,19 @@ void Student::SetAge(int age)
    this->age = age;
 }
 
-void Student::SetDaysInCourse(int daysCourse1, int daysCourse2, int daysCourse3)
+void Student::SetDaysInCourse(int daysInCourse1, int daysInCourse2, int daysInCourse3)
 {
+   // this->daysInCourse[3] = daysInCourse[3];
+
    for (int i = 0; i < 3; i++)
    {
-      this->daysInCourse[0] = daysCourse1;
-      this->daysInCourse[1] = daysCourse2;
-      this->daysInCourse[2] = daysCourse3;
+      this->daysInCourse[0] = daysInCourse1;
+      this->daysInCourse[1] = daysInCourse2;
+      this->daysInCourse[2] = daysInCourse3;
    }
 }
 
-void Student::SetDegreeProgram(string degreeProgram)
+void Student::SetDegreeProgram(DegreeProgram degreeprogram)
 {
    this->degreeProgram = degreeProgram;
 }
@@ -103,12 +107,12 @@ int Student::GetAge()
    return age;
 }
 
-int Student::GetDaysInCourse()
+int *Student::GetDaysInCourse()
 {
-   return daysInCourse[3];
+   return daysInCourse;
 }
 
-string Student::GetDegreeProgram()
+DegreeProgram Student::GetDegreeProgram()
 {
    return degreeProgram;
 }
