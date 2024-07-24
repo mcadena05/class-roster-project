@@ -51,22 +51,18 @@ void Roster::parseStudents(string studentData)
         delimiter = studentData.find(",", start);
         string degree = studentData.substr(start, delimiter - start);
 
-        if (degree == "SOFTWARE")
-        {
-            classRosterArray[lastIndex]->SetDegreeProgram(SOFTWARE);
-        }
-        else if (degree == "SECURITY")
-        {
-            classRosterArray[lastIndex]->SetDegreeProgram(SECURITY);
-        }
-        else if (degree == "NETWORK")
-        {
-            classRosterArray[lastIndex]->SetDegreeProgram(NETWORK);
-        }
-        else
-        {
-            cout << "Degree not included";
-        }
+        // if (degree == "SOFTWARE")
+        // {
+        //     classRosterArray[lastIndex]->SetDegreeProgram(SOFTWARE);
+        // }
+        // else if (degree == "SECURITY")
+        // {
+        //     classRosterArray[lastIndex]->SetDegreeProgram(SECURITY);
+        // }
+        // else if (degree == "NETWORK")
+        // {
+        //     classRosterArray[lastIndex]->SetDegreeProgram(NETWORK);
+        // }
 
         lastIndex++;
     }
@@ -115,6 +111,8 @@ void Roster::remove(string studentID)
     {
         cout << "This Student ID was not found." << endl;
     }
+
+    return;
 }
 
 void Roster::printAll()
@@ -123,6 +121,8 @@ void Roster::printAll()
     {
         classRosterArray[i]->Print();
     }
+
+    return;
 }
 
 void Roster::printAverageDaysInCourse(string studentID)
@@ -142,6 +142,8 @@ void Roster::printAverageDaysInCourse(string studentID)
     }
 
     cout << "Student" << studentID << " has an average of " << average << "days in course";
+
+    return;
 }
 
 void Roster::printInvalidEmails()
@@ -156,6 +158,19 @@ void Roster::printInvalidEmails()
             cout << testEmail << " is invalid. Please try again.";
         }
     }
+
+    return;
 }
 
-// void printByDegreeProgram(DegreeProgram degreeProgram)
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram)
+{
+    for (int i = 0; i < classSize; i++)
+    {
+        if (classRosterArray[i]->GetDegreeProgram() == degreeProgram)
+        {
+            classRosterArray[i]->Print();
+        }
+    }
+
+    return;
+}
