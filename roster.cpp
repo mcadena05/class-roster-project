@@ -51,22 +51,22 @@ void Roster::parseStudents(string studentData)
         delimiter = studentData.find(",", start);
         string degree = studentData.substr(start, delimiter - start);
 
-        // if (degree == "SOFTWARE")
-        // {
-        //     classRosterArray[ind]->SetDegreeProgram(SOFTWARE);
-        // }
-        // else if (degree == "SECURITY")
-        // {
-        //     classRosterArray[ind]->SetDegreeProgram(SECURITY);
-        // }
-        // else if (degree == "NETWORK")
-        // {
-        //     classRosterArray[ind]->SetDegreeProgram(NETWORK);
-        // }
-        // else
-        // {
-        //     cout << "Degree not included";
-        // }
+        if (degree == "SOFTWARE")
+        {
+            classRosterArray[lastIndex]->SetDegreeProgram(SOFTWARE);
+        }
+        else if (degree == "SECURITY")
+        {
+            classRosterArray[lastIndex]->SetDegreeProgram(SECURITY);
+        }
+        else if (degree == "NETWORK")
+        {
+            classRosterArray[lastIndex]->SetDegreeProgram(NETWORK);
+        }
+        else
+        {
+            cout << "Degree not included";
+        }
 
         lastIndex++;
     }
@@ -134,12 +134,28 @@ void Roster::printAverageDaysInCourse(string studentID)
 
         if (classRosterArray[i]->GetId() == studentID)
         {
-            
-            int* daysInClass = classRosterArray[i]->GetDaysInCourse();
+
+            int *daysInClass = classRosterArray[i]->GetDaysInCourse();
             int total = daysInClass[0] + daysInClass[1] + daysInClass[2];
             average = total / 3;
         }
     }
-    
+
     cout << "Student" << studentID << " has an average of " << average << "days in course";
 }
+
+void Roster::printInvalidEmails()
+{
+    for (int i = 0; i < classSize; i++)
+    {
+
+        string testEmail = classRosterArray[i]->GetEmail();
+
+        if (testEmail.find("@") == string::npos || testEmail.find(" ") != string::npos || testEmail.find(".") == string::npos)
+        {
+            cout << testEmail << " is invalid. Please try again.";
+        }
+    }
+}
+
+// void printByDegreeProgram(DegreeProgram degreeProgram)
