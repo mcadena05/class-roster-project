@@ -5,7 +5,6 @@ using namespace std;
 #include "student.h"
 #include "degree.h"
 
-
 // parsing student data table
 void Roster::parseStudents(string studentData)
 {
@@ -117,4 +116,12 @@ void Roster::remove(string studentId)
         cout << "This Student ID was not found." << endl;
     }
 }
- 
+
+void Roster::printAll()
+{
+    for (int i = 0; i < classSize; i++)
+    {
+        classRosterArray[i]->Print();
+    }
+}
+
