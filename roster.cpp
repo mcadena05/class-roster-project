@@ -88,14 +88,14 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
     return;
 }
 
-void Roster::remove(string studentId)
+void Roster::remove(string studentID)
 {
     bool foundStudent = false;
 
     for (int i = 0; i < lastIndex; ++i)
     {
 
-        if (classRosterArray[i]->GetId() == studentId)
+        if (classRosterArray[i]->GetId() == studentID)
         {
 
             foundStudent = true;
@@ -107,7 +107,7 @@ void Roster::remove(string studentId)
             }
 
             lastIndex--;
-            cout << "Student " << studentId << " has been removed" << endl;
+            cout << "Student " << studentID << " has been removed" << endl;
         }
     }
 
@@ -125,3 +125,21 @@ void Roster::printAll()
     }
 }
 
+void Roster::printAverageDaysInCourse(string studentID)
+{
+    int average = 0;
+
+    for (int i = 0; i <= lastIndex; ++i)
+    {
+
+        if (classRosterArray[i]->GetId() == studentID)
+        {
+            
+            int* daysInClass = classRosterArray[i]->GetDaysInCourse();
+            int total = daysInClass[0] + daysInClass[1] + daysInClass[2];
+            average = total / 3;
+        }
+    }
+    
+    cout << "Student" << studentID << " has an average of " << average << "days in course";
+}
