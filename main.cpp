@@ -24,11 +24,11 @@ int main()
          "A5,Marlynn,Garcia,mcade18@wgu.edu,28,5,25,30,SOFTWARE"};
 
 
-    classRoster.printAll();
+    // classRoster.printAll();
 
-    classRoster.printInvalidEmails();
+    // classRoster.printInvalidEmails();
 
-    for (int i = 0; i < classSize; i++){
-        classRoster.printAverageDaysInCourse(studentID);
-    }
+    // for (int i = 0; i < classSize; i++){
+    //     classRoster.printAverageDaysInCourse(studentID);
+    // }
 }
