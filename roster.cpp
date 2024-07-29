@@ -51,18 +51,18 @@ void Roster::parseStudents(string studentData)
         delimiter = studentData.find(",", start);
         string degree = studentData.substr(start, delimiter - start);
 
-        // if (degree == "SOFTWARE")
-        // {
-        //     classRosterArray[lastIndex]->SetDegreeProgram(SOFTWARE);
-        // }
-        // else if (degree == "SECURITY")
-        // {
-        //     classRosterArray[lastIndex]->SetDegreeProgram(SECURITY);
-        // }
-        // else if (degree == "NETWORK")
-        // {
-        //     classRosterArray[lastIndex]->SetDegreeProgram(NETWORK);
-        // }
+        if (degree == "SOFTWARE")
+        {
+            classRosterArray[lastIndex]->SetDegreeProgram(SOFTWARE);
+        }
+        else if (degree == "SECURITY")
+        {
+            classRosterArray[lastIndex]->SetDegreeProgram(SECURITY);
+        }
+        else if (degree == "NETWORK")
+        {
+            classRosterArray[lastIndex]->SetDegreeProgram(NETWORK);
+        }
 
         lastIndex++;
     }
@@ -84,6 +84,7 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
     return;
 }
 
+// removing a student by ID
 void Roster::remove(string studentID)
 {
     bool foundStudent = false;
@@ -115,6 +116,7 @@ void Roster::remove(string studentID)
     return;
 }
 
+// printing all
 void Roster::printAll()
 {
     for (int i = 0; i < classSize; i++)
@@ -125,6 +127,7 @@ void Roster::printAll()
     return;
 }
 
+// printing average days in course by student ID
 void Roster::printAverageDaysInCourse(string studentID)
 {
     int average = 0;
@@ -146,6 +149,7 @@ void Roster::printAverageDaysInCourse(string studentID)
     return;
 }
 
+// printing invaild email if email doesnt meet requirements. A valid email should include an at sign ('@') and period ('.') and should not include a space (' ').
 void Roster::printInvalidEmails()
 {
     for (int i = 0; i < classSize; i++)
@@ -162,6 +166,7 @@ void Roster::printInvalidEmails()
     return;
 }
 
+// print by degree program
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram)
 {
     for (int i = 0; i < classSize; i++)
@@ -170,6 +175,17 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram)
         {
             classRosterArray[i]->Print();
         }
+    }
+
+    return;
+}
+
+// destructor to release the memory that was allocated dynamically in Roster
+Roster::~Roster()
+{
+    for (int i = 0; i < classSize; i++)
+    {
+        delete classRosterArray[i];
     }
 
     return;

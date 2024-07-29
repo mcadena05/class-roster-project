@@ -75,7 +75,7 @@ void Student::SetDaysInCourse(int daysInCourse1, int daysInCourse2, int daysInCo
    }
 }
 
-void Student::SetDegreeProgram(DegreeProgram degreeprogram)
+void Student::SetDegreeProgram(DegreeProgram degreeProgram)
 {
    this->degreeProgram = degreeProgram;
 }
