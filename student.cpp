@@ -4,120 +4,137 @@ using namespace std;
 
 #include "student.h"
 
-// default constructor
-Student::Student()
-{
-   this->studentID = "N/A";
-   this->firstName = "N/A";
-   this->lastName = "N/A";
-   this->email = "N/A";
-   this->age = 0;
-   this->daysInCourse[0] = 0;
-   this->daysInCourse[1] = 0;
-   this->daysInCourse[2] = 0;
-   this->degreeProgram;
-}
-
 // Parameter constructor
-Student::Student(string studentID, string firstName, string lastName, string email,
-                 int age, int daysInCourse[], DegreeProgram degreeProgram)
+Student::Student(
+    string studentID,
+    string firstName,
+    string lastName,
+    string email,
+    int age,
+    int daysInCourse[3],
+    DegreeProgram degreeProgram)
+    : studentID(studentID),
+      firstName(firstName),
+      lastName(lastName),
+      email(email),
+      age(age),
+      degreeProgram(degreeProgram)
 {
-   this->studentID = studentID;
-   // Data member      Parameter
-   this->firstName = firstName;
-   this->lastName = lastName;
-   this->email = email;
-   this->age = age;
-   this->daysInCourse[0] = daysInCourse[0];
-   this->daysInCourse[1] = daysInCourse[1];
-   this->daysInCourse[2] = daysInCourse[2];
-   this->degreeProgram = degreeProgram;
-}
-
-// mutator or setters
-void Student::SetId(string studentID)
-{
-   this->studentID = studentID;
-   // Data member      Parameter
-
-   return;
-}
-
-void Student::SetFirstName(string firstName)
-{
-   this->firstName = firstName;
-}
-
-void Student::SetLastName(string lastName)
-{
-   this->lastName = lastName;
-}
-
-void Student::SetEmail(string email)
-{
-   this->email = email;
-}
-
-void Student::SetAge(int age)
-{
-   this->age = age;
-}
-
-void Student::SetDaysInCourse(int daysInCourse1, int daysInCourse2, int daysInCourse3)
-{
-   // this->daysInCourse[3] = daysInCourse[3];
-
-   for (int i = 0; i < 3; i++)
+   for (int i = 0; i < 3; ++i)
    {
-      this->daysInCourse[0] = daysInCourse1;
-      this->daysInCourse[1] = daysInCourse2;
-      this->daysInCourse[2] = daysInCourse3;
+      this->daysInCourse[i] = daysInCourse[i];
    }
 }
 
-void Student::SetDegreeProgram(DegreeProgram degreeProgram)
+// default constructor
+Student::Student()
 {
-   this->degreeProgram = degreeProgram;
+   studentID = "N/A";
+   firstName = "N/A";
+   lastName = "N/A";
+   email = "N/A";
+   age = 0;
+   daysInCourse[0] = 0;
+   daysInCourse[1] = 0;
+   daysInCourse[2] = 0;
+   degreeProgram;
 }
 
 // accessor or getters
-
-string Student::GetId()
+string Student::getId()
 {
    return studentID;
 }
 
-string Student::GetFirstName()
+string Student::getFirstName()
 {
    return firstName;
 }
 
-string Student::GetLastName()
+string Student::getLastName()
 {
    return lastName;
 }
 
-string Student::GetEmail()
+string Student::getEmail()
 {
    return email;
 }
 
-int Student::GetAge()
+int Student::getAge()
 {
    return age;
 }
 
-int *Student::GetDaysInCourse()
+void Student::getDaysInCourse(int outDaysInCourse[3])
 {
-   return daysInCourse;
+   for (int i = 0; i < 3; i++)
+   {
+      outDaysInCourse[i] = daysInCourse[i];
+   }
 }
 
-DegreeProgram Student::GetDegreeProgram()
+DegreeProgram Student::getDegreeProgram()
 {
    return degreeProgram;
 }
 
-void Student::Print()
+// mutator or setters
+void Student::setId(string Id)
 {
-   cout << studentID << firstName << lastName << email << age << daysInCourse[3] << degreeProgram << endl;
+   this->studentID = Id;
+   // Data member      Parameter
+}
+
+void Student::setFirstName(string firstName)
+{
+   this->firstName = firstName;
+}
+
+void Student::setLastName(string lastName)
+{
+   this->lastName = lastName;
+}
+
+void Student::setEmail(string email)
+{
+   this->email = email;
+}
+
+void Student::setAge(int age)
+{
+   this->age = age;
+}
+
+void Student::setDaysInCourse(int daysInCourse[3])
+{
+   for (int i = 0; i < 3; i++)
+   {
+      this->daysInCourse[i] = daysInCourse[i];
+   }
+}
+
+void Student::setDegreeProgram(DegreeProgram degreeProgram)
+{
+   this->degreeProgram = degreeProgram;
+}
+
+void Student::print()
+
+{
+   string degreeProgramString;
+   switch (degreeProgram)
+   {
+   case (DegreeProgram::NETWORK):
+      degreeProgramString = "Network";
+      break;
+   case (DegreeProgram::SECURITY):
+      degreeProgramString = "Security";
+      break;
+   case (DegreeProgram::SOFTWARE):
+      degreeProgramString = "Software";
+      break;
+   }
+
+   cout << studentID << "\tFirst Name: " + firstName << "\tLast Name: " + lastName << "\tEmail: " + email << "\tAge: " << age << "\tdaysInCourse: {" << daysInCourse[0] << "," << daysInCourse[1] << "," << daysInCourse[2] << "}" << "\tDegree Program: " << degreeProgramString << endl;
 }

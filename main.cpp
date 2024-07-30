@@ -23,12 +23,33 @@ int main()
          "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
          "A5,Marlynn,Garcia,mcade18@wgu.edu,28,5,25,30,SOFTWARE"};
 
+    for (int i = 0; i < 5; i++)
+    {
+        classRoster.parseStudents(studentData[i]);
+    }
 
-    // classRoster.printAll();
+    // print all
+    cout << "All Students:" << endl;
+    classRoster.printAll();
 
-    // classRoster.printInvalidEmails();
+    // print invaild emails
+    cout << "Invalid emails:" << endl;
+    classRoster.printInvalidEmails();
 
-    // for (int i = 0; i < classSize; i++){
-    //     classRoster.printAverageDaysInCourse(studentID);
-    // }
+    // print average Days in Course
+    cout << "Average Days in Course for each student:" << endl;
+    for (int i = 0; i < 5; i++)
+    {
+        classRoster.printAverageDaysInCourse(classRoster.classRosterArray[i]->getId());
+    }
+
+    // print by degree program = software
+    cout << "Students in Software Degree Program" << endl;
+    classRoster.printByDegreeProgram(DegreeProgram::SOFTWARE);
+
+    // checking if student was removed and message that student ID does not exist
+    classRoster.remove("A3");
+    classRoster.remove("A3");
+
+    classRoster.printAll();
 }
