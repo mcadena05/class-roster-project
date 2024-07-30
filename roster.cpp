@@ -110,28 +110,27 @@ void Roster::remove(string studentID)
 {
     bool foundStudent = false;
 
-    for (int i = 0; i < lastIndex; ++i)
+    for (int i = 0; i < classSize; ++i)
     {
 
         if (classRosterArray[i]->getId() == studentID)
         {
 
             foundStudent = true;
-            int j = i;
-
-            for (j = i; j < lastIndex; ++j)
+            
+            for (int j = i; j < classSize; ++j)
             {
                 classRosterArray[j] = classRosterArray[j + 1];
             }
 
-            lastIndex--;
+            classSize--;
             cout << "Student " << studentID << " has been removed" << endl;
         }
     }
 
     if (foundStudent == false)
     {
-        cout << "Student " << studentID << " was not found." << endl;
+        cout << "Student " << studentID << " was not found" << endl;
     }
 
     return;
@@ -155,15 +154,15 @@ void Roster::printAverageDaysInCourse(string studentID)
 
     for (int i = 0; i < 5; ++i)
     {
-        int outDaysInCourse[3];
-
         if (classRosterArray[i]->getId() == studentID)
         {
             int daysInClass[3];
             classRosterArray[i]->getDaysInCourse(daysInClass);
             int total = daysInClass[0] + daysInClass[1] + daysInClass[2];
             average = total / 3;
-        }
+            break;
+        }     
+          
     }
 
     cout << "Student " << studentID << " has an average of " << average << " days in course" << endl;
@@ -181,7 +180,7 @@ void Roster::printInvalidEmails()
 
         if (testEmail.find("@") == string::npos || testEmail.find(" ") != string::npos || testEmail.find(".") == string::npos)
         {
-            cout << testEmail << " is invalid." << endl;
+            cout << testEmail << " is invalid" << endl;
         }
     }
 

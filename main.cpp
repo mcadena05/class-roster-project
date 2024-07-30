@@ -44,12 +44,11 @@ int main()
     }
 
     // print by degree program = software
-    cout << "Students in Software Degree Program" << endl;
+    cout << "Students in Software Degree Program:" << endl;
     classRoster.printByDegreeProgram(DegreeProgram::SOFTWARE);
 
     // checking if student was removed and message that student ID does not exist
     classRoster.remove("A3");
-    classRoster.remove("A3");
-
     classRoster.printAll();
+    classRoster.remove("A3");
 }

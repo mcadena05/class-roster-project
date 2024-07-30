@@ -120,7 +120,6 @@ void Student::setDegreeProgram(DegreeProgram degreeProgram)
 }
 
 void Student::print()
-
 {
    string degreeProgramString;
    switch (degreeProgram)

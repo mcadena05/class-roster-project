@@ -19,9 +19,9 @@ public:
         void printInvalidEmails();
         void printByDegreeProgram(DegreeProgram degreeProgram);
 
-        const int classSize = 5;
+        int classSize = 5;
         int lastIndex = 0;
-        
+
 
         ~Roster();
 };
